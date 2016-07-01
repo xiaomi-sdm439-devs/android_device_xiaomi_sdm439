@@ -1,2 +1,5 @@
 # Brightness
  persist.sys.qcom-brightness="$(cat /sys/class/leds/lcd-backlight/max_brightness)"
+
+# Gyroscope
+ro.vendor.sensors.pseudo_gyro=true
