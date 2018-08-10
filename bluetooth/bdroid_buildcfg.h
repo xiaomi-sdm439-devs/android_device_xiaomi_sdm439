@@ -40,6 +40,8 @@ static inline const char* BtmGetDefaultName()
 
 #define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 
+#undef PROPERTY_VALUE_MAX
+
 // Disables read remote device feature
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_ACL_CONNECTIONS    7
