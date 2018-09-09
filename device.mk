@@ -89,6 +89,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/xiaomi/pine/configs/securelock.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/securelock.xml
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.2-service.xiaomi_pine
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
