@@ -118,6 +118,10 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/firmware_mnt:/firmware \
     /mnt/vendor/persist:/persist
 
+# Power
+TARGET_USES_INTERACTION_BOOST := true
+TARGET_TAP_TO_WAKE_NODE := "/dev/input/event1"
+
 # Props
 TARGET_SYSTEM_PROP += device/xiaomi/pine/system.prop
 
