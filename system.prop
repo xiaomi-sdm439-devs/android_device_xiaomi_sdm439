@@ -3,3 +3,6 @@
 
 # Gyroscope
 ro.vendor.sensors.pseudo_gyro=true
+
+# Radio
+ro.telephony.default_network=22,22
