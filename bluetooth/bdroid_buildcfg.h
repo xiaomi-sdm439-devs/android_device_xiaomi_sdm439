@@ -17,6 +17,8 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
+#pragma push_macro("PROPERTY_VALUE_MAX")
+
 #include <cutils/properties.h>
 #include <string.h>
 
@@ -40,8 +42,6 @@ static inline const char* BtmGetDefaultName()
 
 #define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 
-#undef PROPERTY_VALUE_MAX
-
 // Disables read remote device feature
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_ACL_CONNECTIONS    7
@@ -56,4 +56,7 @@ static inline const char* BtmGetDefaultName()
 #define BTA_DISABLE_DELAY 1000 /* in milliseconds */
 #define BTM_WBS_INCLUDED TRUE
 #define BTIF_HF_WBS_PREFERRED TRUE
+
+#pragma pop_macro("PROPERTY_VALUE_MAX")
+
 #endif
