@@ -24,6 +24,9 @@ TARGET_SCREEN_WIDTH := 720
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    $(LOCAL_PATH)/overlay/lineage-sdk
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     audio.bluetooth.default
