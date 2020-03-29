@@ -27,6 +27,13 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     $(LOCAL_PATH)/overlay/lineage-sdk
 
+# Overlays - override vendor ones
+PRODUCT_PACKAGES += \
+    FrameworksResCommon \
+    FrameworksResTarget \
+    DevicesOverlay \
+    DevicesAndroidOverlay
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     audio.bluetooth.default
