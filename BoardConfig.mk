@@ -142,6 +142,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/xiaomi/pine
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # SELinux
+SELINUX_IGNORE_NEVERALLOWS := true
+SELINUX_IGNORE_NEVERALLOWS_ON_USER := true
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/qcom/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/qcom/sepolicy/public
 BOARD_SEPOLICY_DIRS += device/xiaomi/pine/sepolicy/temp
