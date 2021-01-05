@@ -47,7 +47,8 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common
+    ims-ext-common \
+    ims-ext-common_system
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -83,7 +84,8 @@ PRODUCT_PACKAGES += \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
-    telephony-ext
+    telephony-ext \
+    ims-ext-common_system
 
 # VNDK
 PRODUCT_PACKAGES += \
