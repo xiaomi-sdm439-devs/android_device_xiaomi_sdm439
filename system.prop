@@ -56,7 +56,6 @@ media.msm8956hw=0
 mm.enable.smoothstreaming=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
-media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
 #minimum duration for offload playback in secs
 audio.offload.min.duration.secs=30
