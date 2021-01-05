@@ -89,5 +89,9 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     vndk_package
 
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libnl
+
 # Call proprietary blobs setup
 $(call inherit-product-if-exists, vendor/xiaomi/pine/pine-vendor.mk)
