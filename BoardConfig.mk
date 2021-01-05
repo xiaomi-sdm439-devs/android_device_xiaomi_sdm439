@@ -126,6 +126,9 @@ TARGET_RECOVERY_FSTAB := device/xiaomi/pine/rootdir/etc/fstab.qcom
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/xiaomi/pine
 
+# RIL
+TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/qcom/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/qcom/sepolicy/public
