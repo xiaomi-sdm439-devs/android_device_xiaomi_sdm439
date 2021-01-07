@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018-2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,16 +22,16 @@
 
 #include <fstream>
 
-#define LEDS            "/sys/class/leds/"
-
-#define LCD_LED         LEDS "lcd-backlight/"
-#define WHITE_LED       LEDS "red/"
+#define LCD_LED         "/sys/class/leds/lcd-backlight/"
+#define WHITE_LED       "/sys/class/leds/red/"
+#define BLUE_LED        "/sys/class/leds/blue/"
+#define GREEN_LED       "/sys/class/leds/green/"
 
 #define BREATH          "breath"
 #define BRIGHTNESS      "brightness"
+#define MAX_BRIGHTNESS  "max_brightness"
 #define DELAY_OFF       "delay_off"
 #define DELAY_ON        "delay_on"
-#define MAX_BRIGHTNESS  "max_brightness"
 
 namespace {
 /*
@@ -57,8 +57,8 @@ static int get(std::string path) {
     int value;
 
     if (!file.is_open()) {
-        ALOGW("failed to read from %s", path.c_str());
-        return 0;
+    ALOGW("failed to read from %s", path.c_str());
+    return 0;
     }
 
     file >> value;
@@ -109,20 +109,43 @@ static void handleBacklight(const LightState& state) {
 
 static void handleNotification(const LightState& state) {
     uint32_t whiteBrightness = getScaledBrightness(state, getMaxBrightness(WHITE_LED MAX_BRIGHTNESS));
+    uint32_t blueBrightness = getScaledBrightness(state, getMaxBrightness(BLUE_LED MAX_BRIGHTNESS));
+    uint32_t greenBrightness = getScaledBrightness(state, getMaxBrightness(GREEN_LED MAX_BRIGHTNESS));
 
-    /* Disable blinking */
+    /* Disable breathing or blinking */
     set(WHITE_LED BREATH, 0);
+    set(WHITE_LED DELAY_OFF, 0);
+    set(WHITE_LED DELAY_ON, 0);
 
-    if (state.flashMode == Flash::TIMED) {
+    set(BLUE_LED BREATH, 0);
+    set(BLUE_LED DELAY_OFF, 0);
+    set(BLUE_LED DELAY_ON, 0);
 
-        /* White */
-        set(WHITE_LED DELAY_OFF, state.flashOffMs);
-        set(WHITE_LED DELAY_ON, state.flashOnMs);
+    set(GREEN_LED BREATH, 0);
+    set(GREEN_LED DELAY_OFF, 0);
+    set(GREEN_LED DELAY_ON, 0);
 
-        /* Enable blinking */
-        set(WHITE_LED BREATH, 1);
-    } else {
-        set(WHITE_LED BRIGHTNESS, whiteBrightness);
+    switch (state.flashMode) {
+        case Flash::HARDWARE:
+            /* Breathing */  
+            set(WHITE_LED BREATH, 1);
+            set(BLUE_LED BREATH, 1);
+            set(GREEN_LED BREATH, 1);
+            break;
+        case Flash::TIMED:
+            /* Blinking */
+            set(WHITE_LED DELAY_OFF, state.flashOnMs);
+            set(WHITE_LED DELAY_ON, state.flashOffMs);
+            set(BLUE_LED DELAY_OFF, state.flashOnMs);
+            set(BLUE_LED DELAY_ON, state.flashOffMs);
+            set(GREEN_LED DELAY_OFF, state.flashOnMs);
+            set(GREEN_LED DELAY_ON, state.flashOffMs);
+            break;
+        case Flash::NONE:
+        default:
+            set(WHITE_LED BRIGHTNESS, whiteBrightness);
+            set(BLUE_LED BRIGHTNESS, blueBrightness);
+            set(GREEN_LED BRIGHTNESS, greenBrightness);
     }
 }
 
@@ -147,8 +170,7 @@ namespace V2_0 {
 namespace implementation {
 
 Return<Status> Light::setLight(Type type, const LightState& state) {
-    LightStateHandler handler;
-    bool handled = false;
+    LightStateHandler handler = nullptr;
 
     /* Lock global mutex until light state is updated. */
     std::lock_guard<std::mutex> lock(globalLock);
@@ -170,15 +192,12 @@ Return<Status> Light::setLight(Type type, const LightState& state) {
     for (LightBackend& backend : backends) {
         if (handler == backend.handler && isLit(backend.state)) {
             handler(backend.state);
-            handled = true;
-            break;
+            return Status::SUCCESS;
         }
     }
 
     /* If no type has been lit up, then turn off the hardware. */
-    if (!handled) {
-        handler(state);
-    }
+    handler(state);
 
     return Status::SUCCESS;
 }

@@ -60,7 +60,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.pine
+    android.hardware.light@2.0-service.xiaomi_pine
 
 # Net
 PRODUCT_PACKAGES += \
