@@ -54,6 +54,10 @@ PRODUCT_PACKAGES += \
     ims-ext-common \
     ims-ext-common_system
 
+# init
+PRODUCT_PACKAGES += \
+    init.target.rc
+
 # Keylayout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl
@@ -61,6 +65,10 @@ PRODUCT_COPY_FILES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.xiaomi_pine
+
+# Modules
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/pronto_wlan.ko:$(TARGET_COPY_OUT_SYSTEM)/lib/modules/pronto_wlan.ko
 
 # Net
 PRODUCT_PACKAGES += \
