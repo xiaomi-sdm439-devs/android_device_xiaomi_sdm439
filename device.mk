@@ -77,6 +77,10 @@ PRODUCT_PACKAGES += \
     rcs_service_api \
     rcs_service_api.xml
 
+# Secure Lock
+PRODUCT_COPY_FILES += \
+    device/xiaomi/pine/configs/securelock.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/securelock.xml
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
