@@ -32,7 +32,6 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
     libxml2
 
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 LOCAL_HEADER_LIBRARIES += libutils_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 
