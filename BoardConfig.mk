@@ -77,6 +77,10 @@ TARGET_USES_HWC2 := true
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
+# Init
+TARGET_INIT_VENDOR_LIB := //device/xiaomi/pine:libinit_pine
+TARGET_RECOVERY_DEVICE_MODULES := libinit_pine
+
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8
