@@ -1,3 +1,8 @@
+# Bluetooth
+persist.bluetooth.a2dp_offload.disabled=true
+persist.vendor.qcom.bluetooth.enable.splita2dp=true
+ro.bluetooth.a2dp_offload.supported=true
+
 # Brightness
  persist.sys.qcom-brightness="$(cat /sys/class/leds/lcd-backlight/max_brightness)"
 
