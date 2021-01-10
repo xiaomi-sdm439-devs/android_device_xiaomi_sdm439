@@ -49,7 +49,7 @@ void property_override(char const prop[], char const value[])
 }
 
 void vendor_load_properties() {
-    property_override("ro.build.description", "coral-user 11 RQ1A.210105.003 7005429 release-keys");
-    property_override("ro.build.fingerprint", "google/coral/coral:11/RQ1A.210105.003/7005429:user/release-keys");
-    property_override("ro.bootimage.build.fingerprint", "google/coral/coral:11/RQ1A.210105.003/7005429:user/release-keys");
+    property_override("ro.build.description", "redfin-user 11 RQ1A.210105.003 7005429 release-keys");
+    property_override("ro.build.fingerprint", "google/redfin/redfin:11/RQ1A.210105.003/7005429:user/release-keys");
+    property_override("ro.bootimage.build.fingerprint", "google/redfin/redfin:11/RQ1A.210105.003/7005429:user/release-keys");
 }
