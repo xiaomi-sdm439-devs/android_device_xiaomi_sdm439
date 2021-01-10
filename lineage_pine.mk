@@ -34,6 +34,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="pine" \
     TARGET_DEVICE="pine"
 
-BUILD_FINGERPRINT := Xiaomi/pine/pine:10/QKQ1.191014.001/V11.0.5.0.QCMMIXM:user/release-keys
-
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
