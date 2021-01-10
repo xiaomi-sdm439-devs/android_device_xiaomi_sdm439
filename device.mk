@@ -63,7 +63,8 @@ PRODUCT_PACKAGES += \
 
 # init
 PRODUCT_PACKAGES += \
-    init.target.rc
+    init.target.rc \
+    init.qcom.rc
 
 # Keylayout
 PRODUCT_COPY_FILES += \
