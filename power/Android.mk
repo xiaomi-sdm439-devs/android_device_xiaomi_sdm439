@@ -2,8 +2,8 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := android.hardware.power@1.2-service.xiaomi_pine
-LOCAL_INIT_RC := android.hardware.power@1.2-service.xiaomi_pine.rc
+LOCAL_MODULE := android.hardware.power@1.2-service.xiaomi_sdm439
+LOCAL_INIT_RC := android.hardware.power@1.2-service.xiaomi_sdm439.rc
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE_TAGS := optional
 
