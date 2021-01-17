@@ -118,4 +118,4 @@ PRODUCT_PACKAGES += \
     libnl
 
 # Call proprietary blobs setup
-$(call inherit-product-if-exists, vendor/xiaomi/sdm439-common/sfm439-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/sdm439-common/sdm439-common-vendor.mk)
